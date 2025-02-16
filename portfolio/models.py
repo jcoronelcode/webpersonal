@@ -8,6 +8,7 @@ class Project(models.Model):
     image = models.ImageField(upload_to='img', verbose_name = 'imagen')
     created = models.DateTimeField(auto_now_add=True, verbose_name = 'Fecha de creacion')
     updated = models.DateTimeField(auto_now=True, verbose_name = 'Fecha actualizacion')
+    url = models.URLField(null=True, blank=True, verbose_name = 'URL')
     
     class Meta:
         verbose_name = 'proyecto'
