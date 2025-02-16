@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'core',
     'portfolio.apps.PortfolioConfig',
     'home.apps.HomeConfig',
+    'technologies.apps.TechnologiesConfig',
 ]
 
 MIDDLEWARE = [

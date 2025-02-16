@@ -10,21 +10,45 @@
 {% endblock %}
 
 {% block content %}
-    {% for courses in education %}
+    {% for course in education %}
         <div class="container">
-			<!-- Proyecto -->
-			<div class="row courses">  	
-				<div class="col-lg-3 col-md-4 offset-lg-1">
-				<img class="img-fluid" src="{{courses.image.url}}" alt="">
-			</div>
-			<div class="col-lg-7 col-md-8">
-				<h2 class="section-heading title">{{courses.title}}</h2> 
-                <br>
-                <h4>{{courses.school}}</h4>  
-				<p>{{courses.description}}</p>
-                <p>{{courses.start_date}} - {{courses.end_date}}</p>
-			</div>
-		</div>
-        <hr>
+            <!-- Fila principal de cada curso -->
+            <div class="row courses">
+                <div class="col-lg-3 col-md-4 offset-lg-1">
+                    <img class="img-fluid" src="{{ course.image.url }}" alt="{{ course.title }}">
+                </div>
+                <div class="col-lg-7 col-md-8">
+                    <h2 class="section-heading title">{{ course.title }}</h2> 
+                    <br>
+                    <h4>{{ course.school }}</h4>  
+                    <p>{{ course.description }}</p>
+                    <p>{{ course.start_date }} - {{ course.end_date }}</p>
+
+                    <br>
+                    <!-- Sección de tarjetas de tecnologías (si hay) -->
+                    {% if course.technologies.all %}
+                    <h5>Tecnologías Aprendidas</h5>
+                    <div class="row row-cols-2 row-cols-md-4 g-3">
+                        {% for tech in course.technologies.all %}
+                            <div class="col">
+                                <!-- Tarjeta horizontal -->
+                                <div class="card d-flex flex-row align-items-center p-2" style="width: auto;">
+                                    <img src="{{ tech.image.url }}"
+                                        alt="{{ tech.name }}"
+                                        style="width:40px; height:40px; object-fit: contain;">
+                                    <p class="card-text mb-0 ms-2" style="font-size: 1rem; margin: 0.5rem;">
+                                        {{ tech.name }}
+                                    </p>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+{% endif %}
+
+                </div>
+            </div>
+            <hr>
+        </div>
     {% endfor %}
 {% endblock %}
+

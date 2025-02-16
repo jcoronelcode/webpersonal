@@ -1,4 +1,5 @@
 from django.db import models
+from technologies.models import Technologies
 
 # Create your models here.
 
@@ -11,6 +12,9 @@ class Education(models.Model):
     end_date = models.DateField(verbose_name = 'Fecha de finalizacion')
     created = models.DateTimeField(auto_now_add=True, verbose_name = 'Fecha de creacion')
     updated = models.DateTimeField(auto_now=True, verbose_name = 'Fecha actualizacion')
+    
+    # Relación ManyToMany al modelo Technology (que está en otra app)
+    technologies = models.ManyToManyField(Technologies, blank=True, verbose_name='Tecnologías')
     
     class Meta:
         verbose_name = 'educacion'
