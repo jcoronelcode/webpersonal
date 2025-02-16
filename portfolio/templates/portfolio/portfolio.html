@@ -6,7 +6,7 @@
 
 {% block headers %}
 <h1>Portafolio</h1>
-<span class="subheading">Proyectos y CV</span>
+<span class="subheading">Proyectos</span>
 {% endblock %}
 
 {% block content %}
@@ -20,7 +20,9 @@
 			<div class="col-lg-7 col-md-8">
 				<h2 class="section-heading title">{{project.title}}</h2>   
 				<p>{{project.description}}</p>
-				<p><a href="{{project.url}}">Haz click para verlo en mi GitHub!</a></p>
+				{% if project.url %}
+				<p><a href="{{project.url}}">Haz click para verlo en mi perfil de GitHub!</a></p>
+				{% endif %}
 			</div>
 		</div>
 	{% endfor %}
