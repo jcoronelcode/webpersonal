@@ -4,7 +4,7 @@ from django.db import models
 
 class Technologies(models.Model):
     name = models.CharField(max_length=100, verbose_name = 'nombre')
-    image = models.ImageField(upload_to='img', verbose_name = 'imagen')
+    image_url = models.URLField(max_length=200, verbose_name = 'url de la imagen', default='https://www.google.com')
     created = models.DateTimeField(auto_now_add=True, verbose_name = 'Fecha de creacion')
     updated = models.DateTimeField(auto_now=True, verbose_name = 'Fecha actualizacion')
     
